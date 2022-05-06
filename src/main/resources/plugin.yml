@@ -1,0 +1,5 @@
+name: ${plugin_name}
+version: ${version}
+main: com.layue13.layuelibrary.bukkit.LayueLibraryBukkitPlugin
+api-version: 1.13
+prefix: ${plugin_name}
