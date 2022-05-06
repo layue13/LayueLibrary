@@ -21,6 +21,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'org.jetbrains:annotations:23.0.0'
     implementation 'org.bukkit:bukkit:1.13-R0.1-SNAPSHOT'
 }
 
