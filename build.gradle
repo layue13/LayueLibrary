@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group 'com.layue13'
@@ -22,10 +21,12 @@ repositories {
 
 dependencies {
     compileOnly 'org.jetbrains:annotations:23.0.0'
+    compileOnly 'com.google.guava:guava:31.1-jre'
     implementation 'org.bukkit:bukkit:1.13-R0.1-SNAPSHOT'
 }
 
 dependencies {
+    testImplementation 'com.google.guava:guava:31.1-jre'
     testImplementation 'com.github.seeseemelk:MockBukkit-v1.13:0.2.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
