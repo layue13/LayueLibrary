@@ -1,46 +1,36 @@
-plugins {
-    id 'java'
-    id 'maven-publish'
-}
+allprojects {
+    apply plugin: 'java'
 
-group 'com.layue13'
-version '1.0-SNAPSHOT'
-def plugin_name = 'LayueLibrary'
-
-repositories {
-    mavenCentral()
-    maven {
-        name = 'spigotmc-repo'
-        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'spigotmc-repo'
+            url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        }
+        maven {
+            name = 'bungee-repo'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        maven {
+            name = 'jitpack'
+            url = 'https://jitpack.io'
+        }
     }
-    maven {
-        name = 'jitpack'
-        url = 'https://jitpack.io'
+
+    ext {
+        pluginName = 'LayueLibrary'
     }
-}
 
-dependencies {
-    compileOnly 'org.jetbrains:annotations:23.0.0'
-    compileOnly 'com.google.guava:guava:31.1-jre'
-    implementation 'org.bukkit:bukkit:1.13-R0.1-SNAPSHOT'
-}
+    dependencies {
+        compileOnly 'org.jetbrains:annotations:23.0.0'
+    }
 
-dependencies {
-    testImplementation 'com.google.guava:guava:31.1-jre'
-    testImplementation 'com.github.seeseemelk:MockBukkit-v1.13:0.2.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-}
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
 
-test {
-    useJUnitPlatform()
-}
-
-processResources {
-    def props = [version: version, plugin_name: plugin_name]
-    inputs.properties props
-    filteringCharset 'UTF-8'
-    filesMatching('plugin.yml') {
-        expand props
+    test {
+        useJUnitPlatform()
     }
 }

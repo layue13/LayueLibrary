@@ -1,2 +1,5 @@
 rootProject.name = 'LayueLibrary'
+include 'LayueLibrary-BungeeCord'
+include 'LayueLibrary-Bukkit'
+include 'LayueLibrary-Common'
 
