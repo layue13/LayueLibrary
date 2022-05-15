@@ -1,5 +1,15 @@
 group 'com.layue13'
 
 dependencies {
+    implementation project(':LayueLibrary-Common')
     compileOnly 'net.md-5:bungeecord-api:1.16-R0.5-SNAPSHOT'
+}
+
+processResources {
+    def props = [version: rootProject.version, plugin_name: pluginName + "-BungeeCord"]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
 }

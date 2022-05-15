@@ -1,0 +1,3 @@
+name: ${plugin_name}
+main: com.layue13.layuelibrary.bungeecord.LayueLibraryBungeePlugin
+version: ${version}

@@ -1,6 +1,7 @@
 group 'com.layue13'
 
 dependencies {
+    implementation project(':LayueLibrary-Common')
     implementation 'org.bukkit:bukkit:1.13-R0.1-SNAPSHOT'
     compileOnly 'com.google.guava:guava:31.1-jre'
 }
@@ -10,7 +11,7 @@ dependencies {
 }
 
 processResources {
-    def props = [version: rootProject.version, plugin_name: pluginName]
+    def props = [version: rootProject.version, plugin_name: pluginName + "-Bukkit"]
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
