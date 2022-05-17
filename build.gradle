@@ -1,4 +1,4 @@
-allprojects {
+subprojects {
     apply plugin: 'java'
 
     repositories {
@@ -19,18 +19,40 @@ allprojects {
 
     ext {
         pluginName = 'LayueLibrary'
+        pluginVersion = '1.0.0'
+        junitVersion = '5.8.2'
+        guavaVersion = '31.1-jre'
+        gsonVersion = '2.9.0'
     }
 
     dependencies {
         compileOnly 'org.jetbrains:annotations:23.0.0'
+        compileOnly "com.google.guava:guava:${guavaVersion}"
+        implementation "com.google.code.gson:gson:${gsonVersion}"
     }
 
     dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+        testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
     }
 
     test {
         useJUnitPlatform()
+    }
+
+    if (it.name != 'LayueLibrary-Common') {
+        build {
+            doLast {
+                copy {
+                    from layout.buildDirectory.dir("libs")
+                    include '*.jar'
+                    into rootProject.layout.buildDirectory
+                }
+            }
+        }
+    }
+
+    clean {
+        delete rootProject.layout.buildDirectory
     }
 }

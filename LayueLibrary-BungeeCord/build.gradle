@@ -6,7 +6,7 @@ dependencies {
 }
 
 processResources {
-    def props = [version: rootProject.version, plugin_name: pluginName + "-BungeeCord"]
+    def props = [version: pluginVersion, plugin_name: pluginName]
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
